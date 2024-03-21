@@ -23,7 +23,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user/chirps', function (){
         return auth() -> user() -> chirps;
     });
-    Route::post('/chirp', [ChirpController::class, 'store']) ->name('chirp.store');
+    Route::post('/chirps', [ChirpController::class, 'store']) ->name('chirps.store');
+    Route::patch('/chirps/{chirp}', [ChirpController::class, 'update']) ->name('chirps.update');
 });
 
 Route::get('/chirps', [ChirpController::class, 'index']) ->name('chirps.index');
